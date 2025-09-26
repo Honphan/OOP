@@ -1,40 +1,98 @@
-package Week2.BankingSystem;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class Account {
     public static final String CHECKING = "CHECKING";
     public static final String SAVINGS = "SAVINGS";
     protected long accountNumber;
     protected double balance;
-    List<Transaction> transactionList;
+    protected List<Transaction> transactionList;
 
-    public Account(){
-         this.accountNumber = -1;
-         this.balance = 0;
+    /**
+     * Transaction constructor 1.
+     */
+    public Account() {
+        this.accountNumber = -1;
+        this.balance = 0;
     }
 
-    public Account(long accountNumber, double balance){
-          this.accountNumber = accountNumber;
-          this.balance = balance;
+    /**
+     * Transaction constructor 1.
+     */
+    public Account(long accountNumber, double balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+        this.transactionList = new ArrayList<>();
     }
 
-    public String getTransaction(){
-        return null;
+    /**
+     * Transaction constructor 1.
+     */
+    public String getTransactionHistory() {
+        StringBuilder result = new StringBuilder();
+        if (transactionList != null) {
+            result.append("Lịch sử giao dịch của tài khoản " + accountNumber + ":");
+            for (Transaction transaction : transactionList) {
+                result.append(transaction.getTransactionSummary(transaction.getType()));
+            }
+        }
+        return result.toString();
     }
 
-    public void addTransaction(Transaction transaction){
+    /**
+     * Transaction constructor 1.
+     */
+    public void addTransaction(Transaction transaction) {
+        this.transactionList.add(transaction);
     }
 
+    /**
+     * Transaction constructor 1.
+     */
     public abstract void deposit(double amount);
-    public abstract void withdraw(double amount);
-    public  void doWithdrawing(double amount){};
-    public  void doDepositing(double amount){};
 
-   public boolean equals(Objects obj){
-       return false;
-   }
+    /**
+     * Transaction constructor 1.
+     */
+    public abstract void withdraw(double amount);
+
+    /**
+     * Transaction constructor 1.
+     */
+    public void doWithdrawing(double amount) throws InsufficientFundsException, InvalidFundingAmountException {
+        if (amount <= 0) {
+            throw new InvalidFundingAmountException(amount);
+        } else if (amount > balance) {
+            throw new InsufficientFundsException(amount);
+        } else {
+            balance -= amount;
+        }
+
+    }
+
+    /**
+     * Transaction constructor 1.
+     */
+    public void doDepositing(double amount) throws InvalidFundingAmountException {
+        if (amount <= 0) {
+            throw new InvalidFundingAmountException(amount);
+        } else {
+            balance += amount;
+        }
+    }
+
+    /**
+     * Transaction constructor 1.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Account) {
+            Account a = (Account) o;
+            return this.accountNumber == ((Account) o).getAccountNumber();
+        }
+        return false;
+    }
 
     public double getBalance() {
         return balance;

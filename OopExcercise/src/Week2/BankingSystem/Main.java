@@ -7,9 +7,12 @@ public class Main {
         Bank bank = new Bank();
         InputStream inputStream = Main.class.getResourceAsStream("input.txt");
         bank.readCustomerList(inputStream);
-        for(Customer customer: bank.getCustomerList()){
-            System.out.print(customer.getCustomerInfo());
-        }
-        System.out.println(bank.getCustomersInfoByNameOrder());
+        bank.getCustomerList().get(0).getAccountList().getFirst().deposit(-500);
+
+        bank.getCustomerList().get(0).getAccountList().getFirst().withdraw(500);
+        bank.getCustomerList().get(0).getAccountList().getFirst().deposit(500);
+
+        System.out.println(bank.getCustomerList().get(0).getAccountList().getFirst().getTransactionHistory());
+
     }
 }

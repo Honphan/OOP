@@ -1,7 +1,6 @@
-package Week2.BankingSystem;
 
-public class InvalidFundingAmountException extends BankException{
+public class InvalidFundingAmountException extends BankException {
     public InvalidFundingAmountException(double amount) {
-        super("Invalid Funding Amount Exception: " + amount);
+        super(String.format("Số tiền không hợp lệ:$%.2f", amount));
     }
 }

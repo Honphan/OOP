@@ -1,15 +1,16 @@
 
-public class CheckingAccount extends Account {
-    public CheckingAccount(long accountNumber, double balance) {
+public class SavingsAccount extends Account {
+
+    public SavingsAccount(long accountNumber, double balance) {
         super(accountNumber, balance);
     }
 
-    public CheckingAccount() {
+    public SavingsAccount() {
         super();
     }
-
-
-    @Override
+    /**
+     * Transaction constructor 1.
+     */
     public void withdraw(double amount) {
         try {
             if (amount > 1000.0) {
@@ -38,7 +39,7 @@ public class CheckingAccount extends Account {
         }
 
         this.transactionList.add(new Transaction(
-                Transaction.TYPE_WITHDRAW_CHECKING,
+                Transaction.TYPE_WITHDRAW_SAVINGS,
                 amount,
                 initialBalance,
                 this.balance)
@@ -58,7 +59,7 @@ public class CheckingAccount extends Account {
         }
 
         this.transactionList.add(new Transaction(
-                Transaction.TYPE_DEPOSIT_CHECKING,
+                Transaction.TYPE_DEPOSIT_SAVINGS,
                 amount,
                 initialBalance,
                 this.balance)

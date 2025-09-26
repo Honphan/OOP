@@ -1,4 +1,3 @@
-package Week2.BankingSystem;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -8,8 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Bank {
-    private List<Customer> customerList = new ArrayList<>();
+    private List<Customer> customerList;
 
+    public Bank() {
+        customerList = new ArrayList<>();
+    }
+
+    /**
+     * Transaction constructor 1.
+     */
     public void readCustomerList(InputStream inputStream) {
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -23,7 +29,7 @@ public class Bank {
                     Account acc = new CheckingAccount(Double.valueOf(tokens[0]).longValue(), Double.valueOf(tokens[2]));
                     currCustomer.addAccount(acc);
                 } else if (tokens[1].equals("SAVINGS")) {
-                    Account acc = new SavingAccount(Double.valueOf(tokens[0]).longValue(), Double.valueOf(tokens[2]));
+                    Account acc = new SavingsAccount(Double.valueOf(tokens[0]).longValue(), Double.valueOf(tokens[2]));
                     currCustomer.addAccount(acc);
                 } else {
                     customer = new Customer();
@@ -31,8 +37,8 @@ public class Bank {
                     tokens = Arrays.copyOfRange(tokens, 0, tokens.length - 1);
                     String fullName = Arrays.stream(tokens).
                             reduce((a, b) -> {
-                                return a + " " + b;
-                            }
+                                        return a + " " + b;
+                                    }
                             ).orElse("");
                     fullName.trim();
                     customer.setFullName(fullName);
@@ -47,28 +53,24 @@ public class Bank {
         }
 
     }
-
+    /**
+     * Transaction constructor 1.
+     */
     public String getCustomersInfoByNameOrder() {
-        List<Customer> sortedList = customerList.stream()
-                .sorted((c1, c2) -> {
-                    String[] fullName1 = c1.getFullName().trim().split(" ");
-                    String lastName1 = fullName1[fullName1.length - 1];
-                    String[] fullName2 = c2.getFullName().trim().split(" ");
-                    String lastName2 = fullName2[fullName2.length - 1];
-                    return lastName2.compareTo(lastName1);
-                })
-                .toList();
+        customerList.sort((a, b) -> a.getFullName().compareToIgnoreCase(b.getFullName()));
         StringBuilder result = new StringBuilder();
-        for (Customer customer : sortedList) {
+        for (Customer customer : customerList) {
             result.append("Số CMND: " + customer.getIdNumber() + ". " + "Họ tên: " + customer.getFullName() + ".\n");
         }
         return result.toString();
     }
-
+    /**
+     * Transaction constructor 1.
+     */
     public String getCustomersInfoByIdOrder() {
-        List<Customer> sortedList = customerList.stream().sorted((c1, c2) -> (int) (c1.getIdNumber() - c2.getIdNumber())).toList();
+        customerList.sort((a, b) -> Long.compare(a.getIdNumber(), b.getIdNumber()));
         StringBuilder result = new StringBuilder();
-        for (Customer customer : sortedList) {
+        for (Customer customer : customerList) {
             result.append("Số CMND: " + customer.getIdNumber() + ". " + "Họ tên: " + customer.getFullName() + ".\n");
         }
         return result.toString();

@@ -1,4 +1,3 @@
-package Week2.BankingSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,16 +5,26 @@ import java.util.List;
 public class Customer {
     private long idNumber;
     private String fullName;
-    private List<Account> accountList = new ArrayList<>();
-
+    private List<Account> accountList;
+    /**
+     * Transaction constructor 1.
+     */
     public Customer() {
+        this.idNumber = 0;
+        this.fullName = "";
+        this.accountList = new ArrayList<>();
     }
-
+    /**
+     * Transaction constructor 1.
+     */
     public Customer(long idNumber, String fullName) {
         this.idNumber = idNumber;
         this.fullName = fullName;
+        this.accountList = new ArrayList<>();
     }
-
+    /**
+     * Transaction constructor 1.
+     */
     public String getCustomerInfo() {
         StringBuilder result = new StringBuilder();
         result.append(fullName + " " + idNumber + "\n");
@@ -29,11 +38,11 @@ public class Customer {
     }
 
     public void addAccount(Account account) {
-         accountList.add(account);
+        accountList.add(account);
     }
 
     public void removeAccount(Account account) {
-
+        accountList.remove(account);
     }
 
     public long getIdNumber() {
