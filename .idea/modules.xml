@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Bank/Bank.iml" filepath="$PROJECT_DIR$/Bank/Bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dice/Dice.iml" filepath="$PROJECT_DIR$/Dice/Dice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GuessGame/GuessGame.iml" filepath="$PROJECT_DIR$/GuessGame/GuessGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hello/Hello.iml" filepath="$PROJECT_DIR$/Hello/Hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lambda/Lambda.iml" filepath="$PROJECT_DIR$/Lambda/Lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/OOP.iml" filepath="$PROJECT_DIR$/.idea/OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OopExcercise/OopExcercise.iml" filepath="$PROJECT_DIR$/OopExcercise/OopExcercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SinkAShip/SinkAShip.iml" filepath="$PROJECT_DIR$/SinkAShip/SinkAShip.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TuLoKho/TuLoKho.iml" filepath="$PROJECT_DIR$/TuLoKho/TuLoKho.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serialization/serialization.iml" filepath="$PROJECT_DIR$/serialization/serialization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/static-nonstatic/static-nonstatic.iml" filepath="$PROJECT_DIR$/static-nonstatic/static-nonstatic.iml" />
+    </modules>
+  </component>
+</project>
